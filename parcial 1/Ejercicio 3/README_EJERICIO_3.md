@@ -82,3 +82,89 @@ def max_profit_brute_force(prices: List[int]) -> int:
 ✔ Para entender el problema.
 ✔ Para verificar la lógica con entradas pequeñas.
 ❌ No recomendable para entradas grandes.
+
+---
+
+## Solución 2: Optimizada (un recorrido)
+
+### Idea
+
+Recorrer el arreglo una sola vez:
+
+* Mantener el **precio mínimo** visto hasta ahora.
+* Calcular la ganancia si vendemos hoy.
+* Actualizar la mejor ganancia.
+
+### Implementación
+
+```python
+from typing import List
+
+def max_profit_optimized(prices: List[int]) -> int:
+    if not prices:
+        return 0
+
+    min_price = prices[0]
+    max_profit = 0
+
+    for p in prices[1:]:
+        ganancia = p - min_price
+
+        if ganancia > max_profit:
+            max_profit = ganancia
+
+        if p < min_price:
+            min_price = p
+
+    return max_profit
+```
+
+### Complejidad
+
+* **Tiempo:** O(n) → un solo recorrido.
+* **Espacio:** O(1) → memoria constante.
+
+### Cuándo usarla
+
+✔ Solución óptima para entradas grandes.
+✔ Estándar en entrevistas y programación competitiva.
+
+---
+
+## Comparación
+
+| Criterio   | Fuerza Bruta | Optimizada |
+| ---------- | ------------ | ---------- |
+| Tiempo     | O(n²)        | O(n)       |
+| Espacio    | O(1)         | O(1)       |
+| Dificultad | Fácil        | Media      |
+| Uso real   | ❌            | ✅          |
+
+---
+
+## Análisis y patrones utilizados
+
+Este ejercicio utiliza el patrón:
+
+### 🔹 **Min/Max en un recorrido**
+
+Mantener el valor mínimo observado para calcular el mejor resultado posible en tiempo lineal.
+
+Este patrón aparece frecuentemente en:
+
+* problemas financieros
+* máximas ganancias
+* diferencias máximas
+* ventanas de optimización
+
+---
+
+## Resumen
+
+* El problema busca maximizar la ganancia con una sola compra y venta.
+* La solución por fuerza bruta es O(n²).
+* La solución óptima usa un recorrido lineal O(n).
+* Mantener el mínimo precio visto permite calcular la mejor ganancia eficientemente.
+* Es un problema clásico de entrevistas técnicas.
+
+---

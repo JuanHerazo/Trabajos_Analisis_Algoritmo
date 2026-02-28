@@ -1,7 +1,7 @@
 #CONTAINS DUPLICATE
 #Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
-#Complejidad tiempo: O(n)
-#Complejidad tiempo: O(n)
+#Complejidad tiempo: O(n²)
+#Complejidad tiempo: O(1)
 def containsDuplicate(nums: list[int]) -> bool:
     n = len(nums)
     for i in range(n):
